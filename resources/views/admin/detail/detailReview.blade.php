@@ -37,7 +37,7 @@
                                         name="rating" value="" disabled>
                                     <label for="floatingInput">Rating</label>
                                 </div>
-                                <a href="#" class="btn btn-danger">Return</a>
+                                <a href="/review" class="btn btn-danger">Return</a>
                             </div>
                         </div>
                     </div>

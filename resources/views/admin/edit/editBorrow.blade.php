@@ -37,7 +37,7 @@
                                         name="status" value="">
                                     <label for="floatingInput">Status</label>
                                 </div>
-                                <a href="#" class="btn btn-danger">Return</a>
+                                <a href="/bor" class="btn btn-danger">Return</a>
                                 <a href="#" class="btn btn-primary">Edit</a>
                             </div>
                         </div>

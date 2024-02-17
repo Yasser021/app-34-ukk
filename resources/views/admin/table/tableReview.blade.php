@@ -35,7 +35,7 @@
                                 <td>4</td>
                                 <td>
                                     <div class="">
-                                        <a href="#" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
+                                        <a href="/detreview" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
                                         <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>

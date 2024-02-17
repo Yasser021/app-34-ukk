@@ -42,8 +42,8 @@
                                         name="status" value="" disabled>
                                     <label for="floatingInput">Status</label>
                                 </div>
-                                <a href="#" class="btn btn-danger">Return</a>
-                                <a href="#" class="btn btn-success">Edit</a>
+                                <a href="/bor" class="btn btn-danger">Return</a>
+                                <a href="/editbor" class="btn btn-success">Edit</a>
                             </div>
 
                         </div>

@@ -63,7 +63,7 @@
                                 </div>
 
                                 <a href="/buku" class="btn btn-danger">Return</a>
-                                <a href="/editbuku" type="button" class="btn btn-success">Edit</a>
+                                <a href="/editBook" type="button" class="btn btn-success">Edit</a>
                             </div>
                         </div>
                     </div>

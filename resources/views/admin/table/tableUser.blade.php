@@ -12,7 +12,7 @@
                         <div class="">
                             <h5 class="card-title fw-semibold mb-4">Table User</h5>
                         </div>
-                        <a href="#" class="btn btn-primary "><i class="bi bi-plus me-2 "></i>Add Book</a>
+                        <a href="/createuser" class="btn btn-primary "><i class="bi bi-plus me-2 "></i>Add Book</a>
                     </div>
                 </div>
                 <div class="container">
@@ -38,7 +38,7 @@
                                 <td>Admin</td>
                                 <td>
                                     <div class="">
-                                        <a href="#" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
+                                        <a href="/edituser" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
                                         <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>

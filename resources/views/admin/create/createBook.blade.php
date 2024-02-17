@@ -12,7 +12,7 @@
                         <h5 class="card-title fw-semibold mb-4">Forms Add Book</h5>
                         <div class="card">
                             <div class="card-body">
-                                <form action="#" method="#">
+                                {{-- <form action="#" method="#"> --}}
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="floatingSelect"
                                             aria-label="Floating label select example">
@@ -60,7 +60,7 @@
                                     </div>
                                     <a href="/buku" class="btn btn-danger">Return</a>
                                     <button type="submit" class="btn btn-success">Submit</button>
-                                </form>
+                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>

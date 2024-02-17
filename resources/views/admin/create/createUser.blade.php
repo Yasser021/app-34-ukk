@@ -12,7 +12,7 @@
                         <h5 class="card-title fw-semibold mb-4">Forms Add User</h5>
                         <div class="card">
                             <div class="card-body">
-                                <form action="#" method="#">
+                                {{-- <form action="#" method="#"> --}}
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
                                             placeholder="Books Name" name="title" value="">
@@ -33,9 +33,9 @@
                                             placeholder="Role">
                                         <label for="floatingInput">Role</label>
                                     </div>
-                                    <a href="#" class="btn btn-danger">Return</a>
+                                    <a href="/user" class="btn btn-danger">Return</a>
                                     <button class="btn btn-success" type="submit">Submit</button>
-                                </form>
+                                {{-- </form> --}}
                             </div>
                         </div>
                     </div>

@@ -44,7 +44,7 @@
                                     <div class="">
                                         <a href="/detailBook" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
+                                        <a href="/editBook" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
                                         <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
