@@ -147,7 +147,7 @@ body {
     font-size: 16px;
     background-color: #ffffec;
     border-radius: 5px;
-    text-align: center;     
+    text-align: center;
 }
 
 /* .custom-table th {
@@ -172,4 +172,30 @@ body {
 .btn-tab:hover {
     background-color: #c38154;
     color: #ffffec;
+}
+
+/* Custom pagination styles */
+.custom-pagination {
+    margin-top: 20px;
+}
+
+.custom-pagination .pagination {
+    justify-content: center;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #884a39;
+    border-color: #884a39;
+    color: #fff; /* Set text color to white when active */
+}
+
+.custom-pagination .page-link {
+    color: #884a39;
+    border: 1px solid #884a39;
+}
+
+.custom-pagination .page-link:hover {
+    background-color: #884a39;
+    border-color: #884a39;
+    color: #fff; /* Set text color to white on hover */
 }
