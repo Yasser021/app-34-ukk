@@ -1,4 +1,4 @@
-Instalasi
+h1Instalasi
 Clone Repo ini
 
   git clone https://github.com/Yasser021/assets-34-ukk.git
@@ -17,7 +17,7 @@ Buat database dan hubungkan di file .env
 Jalankan migrasi
 
   php artisan migrate --seed
-  # atau
+  atau 
   php artisan migrate:fresh --seed
 Jalankan server
 
