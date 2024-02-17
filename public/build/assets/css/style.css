@@ -1,0 +1,175 @@
+body {
+    background-color: #ffffec;
+    font-family: "Lexend", sans-serif;
+    color: #c38154;
+}
+
+.text-pr {
+    color: #c38154;
+}
+
+.text-sc {
+    color: #884a39;
+}
+
+.text-td {
+    color: #ffffec;
+}
+
+.text-reg {
+    color: #ffffec;
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+}
+
+.text-reg:hover {
+    color: #884a39;
+}
+
+/* Define the button style with initial outline */
+.button-outline {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #884a39; /* Set the initial outline color */
+    color: #884a39; /* Set the initial text color */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+}
+
+/* Change the background color and text color on hover */
+.button-outline:hover {
+    background-color: #884a39; /* Change to full color on hover */
+    color: #ffffec; /* Change to full color text on hover */
+}
+
+.btn-pr {
+    background-color: #884a39;
+    color: #ffffec;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 8px 30px;
+}
+
+.btn-pr:hover {
+    background-color: #c38154;
+    color: #ffffec;
+}
+
+.jm {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.card-book {
+    padding: 20px 60px;
+    margin: 10px;
+    border: 4px solid #884a39;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+}
+
+.card-book:hover {
+    background-color: #884a39; /* Change to full color on hover */
+    color: #ffffec; /* Change to full color text on hover */
+    text-decoration: none;
+}
+
+.card-review {
+    background-color: #c38154;
+    color: #ffffec;
+    padding: 20px 60px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.card-form {
+    background-color: #884a39;
+    color: #ffffec;
+    padding: 50px 50px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.cf {
+    background-color: #884a39;
+}
+
+.m {
+    padding-top: 50px;
+    margin: 50px 50px;
+}
+.r {
+    padding-top: 50px;
+    margin: 100px 50px;
+}
+/* .f {
+    padding-top: 50px;
+    margin: 25px 50px;
+} */
+
+.btn-sec {
+    background-color: #c38154;
+    color: #ffffec;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 15px 175px;
+    margin-top: 20px;
+}
+
+.btn-sec:hover {
+    background-color: #9a5627;
+    color: #ffffec;
+}
+
+.card-log {
+    background-color: #c38154;
+    color: #ffffec;
+    padding: 50px 60px;
+    border-radius: 10px;
+}
+
+.btn-log {
+    background-color: #884a39;
+    color: #ffffec;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 8px 30px;
+}
+
+.btn-log:hover {
+    background-color: #ffffec;
+    color: #884a39;
+}
+
+.table-bg {
+    background-color: #884a39;
+}
+
+/* Custom styles */
+.custom-table {
+    font-size: 16px;
+    background-color: #ffffec;
+    border-radius: 5px;
+    text-align: center;     
+}
+
+/* .custom-table th {
+    font-weight: bold;
+} */
+
+.custom-table td,
+.custom-table th {
+    background-color: transparent;
+    padding: 10px;
+    border-color: #884a39;
+    color: #884a39;
+}
+
+.btn-tab {
+    background-color: #884a39;
+    color: #ffffec;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 5px 10px;
+}
+
+.btn-tab:hover {
+    background-color: #c38154;
+    color: #ffffec;
+}
