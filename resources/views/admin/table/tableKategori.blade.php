@@ -39,12 +39,11 @@
                                                         data-bs-toggle="modal" data-bs-toggle="tooltip"><i
                                                             class="ti ti-pencil"></i></button>
                                                     <form action="{{ route('kategori.destroy', $item->id) }}"
-                                                        method="post">
+                                                        method="post" data-confirm-delete="true">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger ms-2    "
-                                                            data-bs-toggle="tooltip" data-bs-title="Delete"
-                                                            onclick="return confirm('Are you sure?')"><i
+                                                            data-bs-toggle="tooltip" data-bs-title="Delete"><i
                                                                 class="ti ti-trash"></i></button>
                                                     </form>
                                                 </div>

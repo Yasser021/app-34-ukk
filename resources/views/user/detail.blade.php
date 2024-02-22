@@ -5,18 +5,15 @@
         <h2 class="text-center">DETAIL BOOK</h2>
         <div class="row mt-5 d-flex justify-content-center">
             <div class="col-3">
-                <img src="{{ asset('build/assets/image/solo.jpg') }}" alt="solo" width="250" height="350">
-                <p class="mt-4">Rating : 5 <i class="bi bi-star-fill ps-1"></i></p>
+                <img src="{{ asset('storage/' . $book->cover) }}" alt="Cover" width="250" height="350">
+                <p class="mt-4">Rating : {{ $book->rating }} <i class="bi bi-star-fill ps-1"></i></p>
             </div>
             <div class="col-5">
-                <p class="">Nama : Solo Leveling</p>
-                <p class="">Author : Chugong</p>
-                <p class="">Publisher : D&C Media</p>
-                <p class="">Year published : March 4, 2018 </p>
-                <p class="">Synopsis : Bercerita tentang Sung Jin-Woo, seorang Hunter kelas rendah yang mendapatkan
-                    kekuatan misterius yang memungkinkannya untuk menjadi yang terkuat. Dia berusaha meningkatkan
-                    peringkatnya dan melawan monster-monster yang semakin kuat sambil menyelidiki asal-usul kekuatannya.
-                    Cerita ini penuh dengan aksi dan misteri yang menarik.</p>
+                <p class="">Nama : {{ $book->title }}</p>
+                <p class="">Author : {{ $book->author }}</p>
+                <p class="">Publisher : {{ $book->publisher }}</p>
+                <p class="">Year published : {{ $book->publish_year }} </p>
+                <p class="">Synopsis : {{ $book->desc }}</p>
                 <a href="/pinjam" class="btn btn-pr">Borrow</a>
             </div>
         </div>

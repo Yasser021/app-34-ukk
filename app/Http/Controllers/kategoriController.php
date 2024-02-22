@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\kategori;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class kategoriController extends Controller
 {
@@ -13,8 +14,10 @@ class kategoriController extends Controller
     public function index()
     {
         $kategori = kategori::paginate('5');
+        $title = 'Delete category!';
+        $text = "Are you sure you want to delete?";
+        confirmDelete($title, $text);
         return view('admin.table.tableKategori', compact('kategori'));
-
     }
 
     /**
@@ -38,7 +41,8 @@ class kategoriController extends Controller
         ];
 
         kategori::create($data);
-        return redirect()->route('kategori.index')->with('success', 'Kategori Berhasil Tersimpan');
+        Alert::success('success', 'Success Add Category');
+        return redirect()->route('kategori.index');
     }
 
     /**
@@ -68,7 +72,9 @@ class kategoriController extends Controller
             'kategori' => 'required',
         ]);
         $data->update($request->all());
-        return redirect()->route('kategori.index')->with('success', 'Kategori Berhasil Terupdate');
+
+        Alert::success('success', 'Success Update Category');
+        return redirect()->route('kategori.index');
     }
 
     /**

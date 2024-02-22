@@ -8,6 +8,7 @@ use App\Models\kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class bukuController extends Controller
 {
@@ -58,7 +59,8 @@ class bukuController extends Controller
             'id_kategori' => $request->id_kategori
         ];
         buku::create($data);
-        return redirect()->route('buku.index')->with('success', 'Buku Berhasil Tersimpan');
+        Alert::success('success', 'Success Add Book');
+        return redirect()->route('buku.index');
     }
 
     /**
@@ -112,6 +114,7 @@ class bukuController extends Controller
         ];
         $buku = buku::findOrFail($id);
         $buku->update($data);
+        Alert::success('success', 'Success Update Book');
         return redirect()->route('buku.index')->with('success', 'Buku Berhasil Terupdate');
     }
 
@@ -140,16 +143,12 @@ class bukuController extends Controller
         ];
 
         $buku->delete($data);
-        return redirect()->route('buku.index')->with('success', 'Buku Berhasil Terhapus');
-    }   
-    // public function search(Request $request)
-    // {
-    //     $search = $request->search;
-    //     $buku = buku::where('title', 'like', '%' . $search . '%')->paginate(5);
-    //     return view('admin.table.tableBook', compact('buku'));
-    // }
-
-    public function export_excel(){
-        return Excel::download(new bukuExport, 'buku.xlsx');
+        return redirect()->route('buku.index');
+    }
+    public function export()
+    {
+        // dd(buku::all());
+       return Excel::download(new bukuExport, 'buku.xlsx');
+       Alert::success('success', 'Success Export Book');
     }
 }

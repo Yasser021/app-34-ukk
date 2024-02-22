@@ -16,7 +16,7 @@
                             <a href="{{ route('buku.create') }}" type="button" class="btn btn-primary "><i
                                     class="bi bi-plus me-2 "></i>Add
                                 Book</a>
-                            <a href="{{ route('buku.export_excel') }}" type="_blank" class="btn btn-success"><i class="ti ti-download me-2"></i>Generate Excel</a>
+                            <a href="/export" type="_blank" class="btn btn-success"><i class="ti ti-download me-2"></i>Generate Excel</a>
                         </div>
 
                     </div>

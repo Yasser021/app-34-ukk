@@ -18,7 +18,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Username</th>
                                 <th scope="col">Book</th>
@@ -27,53 +26,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>1</td>
-                                <td>Yasser</td>
-                                <td>Solo Leveling</td>
-                                <td>4</td>
-                                <td>
-                                    <div class="">
-                                        <a href="/detreview" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>2</td>
-                                <td>Hana</td>
-                                <td>Parasol Alliance</td>
-                                <td>5</td>
-                                <td>
-                                    <div class="">
-                                        <a href="#" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>3</td>
-                                <td>Anto</td>
-                                <td>Jigokuraku</td>
-                                <td>3</td>
-                                <td>
-                                    <div class="">
-                                        <a href="#" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($review as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->user->user }}</td>
+                                    <td>{{ $item->buku->buku }}</td>
+                                    <td>{{ $item->rating }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('review.show', $item->id) }}" class="btn btn-primary"
+                                                type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-title="Detail"><i class="bi bi-eye"></i></a>
+                                            <form action="{{ route('review.destroy', $item->id) }}" method="post">
+                                                <button class="btn btn-danger" type="button"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Delete"><i class="bi bi-trash3"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                    <div class="">
+                        {{ $review->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>

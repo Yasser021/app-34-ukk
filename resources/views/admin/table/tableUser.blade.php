@@ -12,7 +12,7 @@
                         <div class="">
                             <h5 class="card-title fw-semibold mb-4">Table User</h5>
                         </div>
-                        <a href="/createuser" class="btn btn-primary "><i class="bi bi-plus me-2 "></i>Add Book</a>
+                        <a href="{{ route('user.create') }}" class="btn btn-primary "><i class="bi bi-plus me-2 "></i>Add Book</a>
                     </div>
                 </div>
                 <div class="container">

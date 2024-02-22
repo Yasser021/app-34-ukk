@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\buku;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,26 +15,6 @@ class sesiController extends Controller
     }
     public function login(Request $request){
 
-        // $request->validate([
-        //     'email' => 'required',
-        //     'password' => 'required',
-        // ]);
-
-        // $data = [
-        //     'email' => $request->email,
-        //     'password' => $request->password
-        // ];
-
-        // Auth::attempt($data);
-
-
-        // if (Auth::attempt() == Auth::user($role == 'admin')|| Auth::user($role == 'petugas')) {
-        //     return redirect()->intended('/dashboard');
-        // }elseif(Auth::attempt() == Auth::user()->role == 'user'){
-        //     return redirect()->intended('/home');
-        // }else{
-        //     return redirect()->intended('sesi');
-        // }
         $request->validate([
             'email' => 'required',
             'password' => 'required',
@@ -41,14 +22,13 @@ class sesiController extends Controller
 
         $data = [
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
         ];
 
-        Auth::attempt($data);
-        if (Auth::attempt() == Auth::user($role = 'admin') || Auth::user($role = 'petugas')) {
-            return redirect()->intended('/dashboard');
-        }elseif(Auth::attempt() == Auth::user($role = 'user')){
-            return redirect()->intended('/');
+        if (Auth::attempt($data) == Auth::user($role = 'admin') || Auth::user($role = 'petugas')) {
+            return redirect()->route('dashboard.index');
+        }elseif(Auth::attempt($data) == Auth::user($role = 'user')){
+            return redirect()->route('landingPage.index');
         }else{
             return redirect()->intended('sesi');
         }

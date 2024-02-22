@@ -1,7 +1,13 @@
 <?php
 
+use App\Exports\bukuExport;
+use App\Http\Controllers\bookController;
+use App\Http\Controllers\borrowController;
 use App\Http\Controllers\bukuController;
+use App\Http\Controllers\dashboard;
 use App\Http\Controllers\kategoriController;
+use App\Http\Controllers\landingPage;
+use App\Http\Controllers\reviewController;
 use App\Http\Controllers\sesiController;
 use App\Http\Controllers\userController;
 use Illuminate\Support\Facades\Route;
@@ -33,12 +39,6 @@ Route::get('/pinjam', function () {
 Route::get('/profile', function () {
     return view('user.profile');
 });
-Route::get('/buku', function () {
-    return view('admin.table.tableBook');
-});
-Route::get('/category', function () {
-    return view('admin.table.tableKategori');
-});
 Route::get('/review', function () {
     return view('admin.table.tableReview');
 });
@@ -54,33 +54,10 @@ Route::get('/detbor', function () {
 Route::get('/editbor', function () {
     return view('admin.edit.editBorrow');
 });
-Route::get('/user', function () {
-    return view('admin.table.tableUser');
-});
-Route::get('/createuser', function () {
-    return view('admin.create.createUser');
-});
-Route::get('/edituser', function () {
-    return view('admin.edit.editUser');
-});
-Route::get('/createBook', function () {
-    return view('admin.create.createBook');
-});
-Route::get('/editBook', function () {
-    return view('admin.edit.editBook');
-});
-Route::get('/detailBook', function () {
-    return view('admin.detail.detailBook');
-});
-Route::get('/sesi', function () {
-    return view('auth.login');
-});
-Route::get('/register', function () {
-    return view('auth.register');
-});
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// })->name('dashboard');
 
 Route::get('/sesi', [sesiController::class, 'index'])->name('sesi');
 Route::post('/login', [sesiController::class, 'login'])->name('login');
@@ -89,6 +66,12 @@ Route::post('/register', [sesiController::class, 'register'])->name('register');
 Route::get('/logout', [sesiController::class, 'logout'])->name('logout');
 
 Route::resource('buku', bukuController::class);
-Route::get('/buku/export_excel', [bukuController::class, 'export_excel'])->name('buku.export_excel');
+Route::resource('book', bookController::class);
+Route::get('/export', [bukuController::class, 'export']);
 Route::resource('kategori', kategoriController::class);
 Route::resource('user', userController::class);
+Route::resource('borrow', borrowController::class);
+Route::resource('review', reviewController::class);
+Route::resource('borrow', borrowController::class);
+Route::resource('dashboard', dashboard::class);
+Route::resource('landingPage', landingPage::class);

@@ -16,6 +16,8 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
+
     @include('comp.navbar')
     @yield('konten')
     @include('comp.footer')

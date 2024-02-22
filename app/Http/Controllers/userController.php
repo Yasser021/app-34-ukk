@@ -39,6 +39,16 @@ class userController extends Controller
             'role' => 'required',
             'password' => 'required',
         ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'no' => $request->no,
+            'role' => $request->role,
+            'password' => $request->password,
+        ];
+        User::create($data);
+        return redirect()->route('user.index')->with('success', 'User Berhasil Tersimpan');
     }
 
     /**
@@ -55,6 +65,8 @@ class userController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('admin.edit.editUser', compact('user'));
     }
 
     /**
@@ -63,6 +75,23 @@ class userController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no' => 'required',
+            'role' => 'required',
+            'password' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'no' => $request->no,
+            'role' => $request->role,
+            'password' => $request->password,
+        ];
+        User::findOrFail($id)->update($data);
+        return redirect()->route('user.index')->with('success', 'User Berhasil Diupdate');
     }
 
     /**

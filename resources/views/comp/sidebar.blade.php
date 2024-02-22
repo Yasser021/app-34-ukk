@@ -58,7 +58,7 @@
                     <span class="hide-menu">Action Section</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/bor" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('borrow.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-receipt"></i>
                         </span>
@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/user" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('user.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-users"></i>
                         </span>
