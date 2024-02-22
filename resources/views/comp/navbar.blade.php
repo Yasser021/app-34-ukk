@@ -15,12 +15,19 @@
                 <li class="nav-item mx-3">
                     <a class="nav-link text-pr" href="/book">Book</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link text-pr" href="/pinjam">Borrow</a>
-                </li>
+                @if (Auth::check())
+                    <li class="nav-item ">
+                        <a class="nav-link text-pr" href="/pinjam">Borrow</a>
+                    </li>
+                @endif
             </ul>
+            @if (Auth::check())
+                <a href="/profile" class="text-pr me-2" style="text-decoration: none;">{{ Auth::user()->name }}</a>
+                <a href="{{ route('logout') }}" class="btn button-outline">Log out</a>
+            @else
+                <a href="{{ route('sesi') }}" class="btn button-outline">Log in</a>
+            @endif
 
-            <a href="/sesi" class="btn button-outline">Log in</a>
         </div>
     </div>
 </nav>

@@ -8,7 +8,8 @@
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                   <form action="#" method="#">
+                   <form action="{{ route('kategori.store') }}" method="POST">
+                       @csrf
                        <div class="form-floating mb-3">
                            <input type="Text" name="kategori" class="form-control" id="floatingInput"
                                placeholder="Input Category">

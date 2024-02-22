@@ -19,7 +19,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
@@ -29,54 +28,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>1</td>
-                                <td>Yasser</td>
-                                <td>Yasser@gmail.com</td>
-                                <td>0857774859783</td>
-                                <td>Admin</td>
-                                <td>
-                                    <div class="">
-                                        <a href="/edituser" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>2</td>
-                                <td>Hana</td>
-                                <td>Hana@gmail.com</td>
-                                <td>085XXXXXXXXX</td>
-                                <td>Officer</td>
-                                <td>
-                                    <div class="">
-                                        <a href="#" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>3</td>
-                                <td>Anto</td>
-                                <td>Anto@gmail.com</td>
-                                <td>085XXXXXXXXX</td>
-                                <td>User</td>
-                                <td>
-                                    <div class="">
-                                        <a href="#" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($user as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->no }}</td>
+                                    <td>{{ $item->role }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('user.edit', $item->id) }}" class="btn btn-warning me-2"
+                                                type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
+                                            <form action="{{ route('user.destroy', $item->id) }}" method="post">
+                                                <button  class="btn btn-danger" type="submit"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Delete"><i class="bi bi-trash3"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

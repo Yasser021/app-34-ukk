@@ -122,6 +122,7 @@ body {
 .card-log {
     background-color: #c38154;
     color: #ffffec;
+    place-items: center;
     padding: 50px 60px;
     border-radius: 10px;
 }

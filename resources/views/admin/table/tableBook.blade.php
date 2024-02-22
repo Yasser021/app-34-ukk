@@ -12,14 +12,19 @@
                         <div class="">
                             <h5 class="card-title fw-semibold mb-4">Table Book</h5>
                         </div>
-                        <a href="/createBook" type="button" class="btn btn-primary "><i class="bi bi-plus me-2 "></i>Add Book</a>
+                        <div class="">
+                            <a href="{{ route('buku.create') }}" type="button" class="btn btn-primary "><i
+                                    class="bi bi-plus me-2 "></i>Add
+                                Book</a>
+                            <a href="{{ route('buku.export_excel') }}" type="_blank" class="btn btn-success"><i class="ti ti-download me-2"></i>Generate Excel</a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="container">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">ID</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Book</th>
@@ -31,68 +36,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>1</td>
-                                <td>Comic</td>
-                                <td>Solo Leveling</td>
-                                <td>Chugong</td>
-                                <td>D&C Media</td>
-                                <td>2018</td>
-                                <td>12</td>
-                                <td>
-                                    <div class="">
-                                        <a href="/detailBook" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                        <a href="/editBook" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>2</td>
-                                <td>Comic</td>
-                                <td>The Northern Blade</td>
-                                <td>Chugong</td>
-                                <td>D&C Media</td>
-                                <td>2018</td>
-                                <td>30</td>
-                                <td>
-                                    <div class="">
-                                        <a href="#" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>3</td>
-                                <td>Comic</td>
-                                <td>Troll Trap</td>
-                                <td>Chugong</td>
-                                <td>D&C Media</td>
-                                <td>2018</td>
-                                <td>15</td>
-                                <td>
-                                    <div class="">
-                                        <a href="#" class="btn btn-primary" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                        <a href="#" class="btn btn-warning" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
-                                        <a href="#" class="btn btn-danger" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-title="Delete"><i class="bi bi-trash3"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($buku as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->kategori->kategori }}</td>
+                                    <td>{{ $item->title }}</td>
+                                    <td>{{ $item->author }}</td>
+                                    <td>{{ $item->publisher }}</td>
+                                    <td>{{ $item->publish_year }}</td>
+                                    <td>{{ $item->stock }}</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <a href="{{ route('buku.show', $item->id) }}" class="btn btn-primary"
+                                                type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-title="Detail"><i class="bi bi-eye"></i></a>
+                                            <a href="{{ route('buku.edit', $item->id) }}" class="btn btn-warning mx-2"
+                                                type="button" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
+                                            <form action="{{ route('buku.destroy', $item->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" data-bs-title="Delete"><i
+                                                        class="bi bi-trash3"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="card-footer">
+                    {{ $buku->links('pagination::bootstrap-5') }}
                 </div>
             </div>
         </div>

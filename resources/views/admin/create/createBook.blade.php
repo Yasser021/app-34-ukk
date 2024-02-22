@@ -12,17 +12,8 @@
                         <h5 class="card-title fw-semibold mb-4">Forms Add Book</h5>
                         <div class="card">
                             <div class="card-body">
-                                {{-- <form action="#" method="#"> --}}
-                                    <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect"
-                                            aria-label="Floating label select example">
-                                            <option selected disabled>Open this select menu</option>
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                        <label for="floatingSelect">Select Category</label>
-                                    </div>
+                                <form action="{{ route('buku.store') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
                                             placeholder="Books Name" name="title">
@@ -40,7 +31,7 @@
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="number" class="form-control" id="floatingInput"
-                                            placeholder="Year Publish" name="publish_date">
+                                            placeholder="Year Publish" name="publish_year">
                                         <label for="floatingInput">Year Publish</label>
                                     </div>
                                     <div class="form-floating mb-3">
@@ -48,19 +39,29 @@
                                             placeholder="Books Stock" name="stock">
                                         <label for="floatingInput">Stock</label>
                                     </div>
+                                    <div class="input-group mb-3">
+                                        <label class="input-group-text" for="inputGroupFile01">Book Image</label>
+                                        <input type="file" class="form-control" name="cover" id="inputGroupFile01"
+                                            placeholder="Input Book Cover">
+                                    </div>
                                     <div class="form-floating mb-3">
                                         <textarea class="form-control" placeholder="Leave a comment here" name="desc" id="floatingTextarea2"
                                             style="height: 100px"></textarea>
                                         <label for="floatingTextarea2">Synopsis</label>
                                     </div>
-                                    <div class="input-group mb-3">
-                                        <label class="input-group-text" for="inputGroupFile01">Book Image</label>
-                                        <input type="file" class="form-control" name="image" id="inputGroupFile01"
-                                            placeholder="Input Book Cover">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="floatingSelect"
+                                            aria-label="Floating label select example" name="id_kategori">
+                                            <option selected disabled>Open this select menu</option>
+                                            @foreach ($kategori as $item)
+                                                <option value="{{ $item->id }}">{{ $item->kategori }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label for="floatingSelect">Select Category</label>
                                     </div>
-                                    <a href="/buku" class="btn btn-danger">Return</a>
+                                    <a href="{{ route('buku.index') }}" class="btn btn-danger">Return</a>
                                     <button type="submit" class="btn btn-success">Submit</button>
-                                {{-- </form> --}}
+                                </form>
                             </div>
                         </div>
                     </div>
