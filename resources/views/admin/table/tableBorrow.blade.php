@@ -33,13 +33,11 @@
                             @foreach ($borrow as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->user }}</td>
-                                    <td>{{ $item->book }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->buku->title }}</td>
                                     <td>{{ $item->date_taken }}</td>
-                                    <td>{{ $item->date_return }}</td>
-                                    <td>{{ $item->due_date }}</td>
+                                    <td>{{ $item->return_date }}</td>
                                     <td>{{ $item->quantity }}</td>
-                                    <td>1</td>
                                     <td>
                                         @if ($item->status == 0)
                                             <span class="badge bg-dark">Booked</span>
@@ -50,11 +48,11 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <div class="">
+                                        <div class="d-flex">
                                             <a href="{{ route('borrow.detail', $item->id) }}" class="btn btn-primary"
                                                 type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-title="Detail"><i class="bi bi-eye"></i></a>
-                                            <a href="{{ route('borrow.edit', $item->id) }}" class="btn btn-warning"
+                                            <a href="{{ route('borrow.edit', $item->id) }}" class="btn btn-warning mx-2"
                                                 type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
                                             <form action="{{ route('borrow.destroy', $item->id) }}" method="post">

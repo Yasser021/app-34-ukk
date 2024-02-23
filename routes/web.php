@@ -27,33 +27,33 @@ Route::get('/', function () {
     return view('user.landingPage');
 })->name('home');
 
-Route::get('/book', function () {
-    return view('user.book');
-});
-Route::get('/detail', function () {
-    return view('user.detail');
-});
-Route::get('/pinjam', function () {
-    return view('user.borrow');
-});
-Route::get('/profile', function () {
-    return view('user.profile');
-});
-Route::get('/review', function () {
-    return view('admin.table.tableReview');
-});
-Route::get('/detreview', function () {
-    return view('admin.detail.detailReview');
-});
-Route::get('/bor', function () {
-    return view('admin.table.tableBorrow');
-});
-Route::get('/detbor', function () {
-    return view('admin.detail.detailBorrow');
-});
-Route::get('/editbor', function () {
-    return view('admin.edit.editBorrow');
-});
+// Route::get('/book', function () {
+//     return view('user.book');
+// });
+// Route::get('/detail', function () {
+//     return view('user.detail');
+// });
+// Route::get('/pinjam', function () {
+//     return view('user.borrow');
+// });
+// Route::get('/profile', function () {
+//     return view('user.profile');
+// });
+// Route::get('/review', function () {
+//     return view('admin.table.tableReview');
+// });
+// Route::get('/detreview', function () {
+//     return view('admin.detail.detailReview');
+// });
+// Route::get('/bor', function () {
+//     return view('admin.table.tableBorrow');
+// });
+// Route::get('/detbor', function () {
+//     return view('admin.detail.detailBorrow');
+// });
+// Route::get('/editbor', function () {
+//     return view('admin.edit.editBorrow');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('admin.dashboard');
@@ -65,13 +65,29 @@ Route::get('/showreg', [sesiController::class, 'showRegister'])->name('showreg')
 Route::post('/register', [sesiController::class, 'register'])->name('register');
 Route::get('/logout', [sesiController::class, 'logout'])->name('logout');
 
+// Route::resource('borrow', borrowController::class);
+Route::get('borrow', [borrowController::class, 'index'])->name('borrow.index');
+Route::get('borrow/create', [borrowController::class, 'create'])->name('borrow.create');
+Route::post('/borrow', [borrowController::class, 'store']);
+Route::get('/borrow/{id}/edit', [borrowController::class, 'edit'])->name('borrow.edit');
+Route::get('/borrow/{id}', [borrowController::class, 'show'])->name('borrow.detail');
+Route::put('/borrow/{id}', [borrowController::class, 'update'])->name('borrow.update');
+Route::delete('/borrow/{id}', [borrowController::class, 'destroy'])->name('borrow.destroy');
+
+
+
 Route::resource('buku', bukuController::class);
+
 Route::resource('book', bookController::class);
+
 Route::get('/export', [bukuController::class, 'export']);
+
 Route::resource('kategori', kategoriController::class);
+
 Route::resource('user', userController::class);
-Route::resource('borrow', borrowController::class);
+
 Route::resource('review', reviewController::class);
-Route::resource('borrow', borrowController::class);
+
 Route::resource('dashboard', dashboard::class);
+
 Route::resource('landingPage', landingPage::class);

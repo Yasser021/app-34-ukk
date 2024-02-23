@@ -25,4 +25,8 @@ class buku extends Model
     {
         return $this->belongsTo(kategori::class, 'id_kategori');
     }
+    public function borrow()
+    {
+        return $this->hasMany(borrow::class, 'id_buku');
+    }
 }

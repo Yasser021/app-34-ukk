@@ -13,7 +13,7 @@ class bookController extends Controller
     public function index()
     {
         $book = buku::paginate('8');
-        return view('comp.cardBook', compact('book'));
+        return view('user.book', compact('book'));
     }
 
     /**
@@ -38,7 +38,8 @@ class bookController extends Controller
     public function show(string $id)
     {
         $book = buku::findOrFail($id);
-        return view('user.detail', compact('book'));
+        $buku = buku::all();
+        return view('user.detail', compact('book', 'buku'));
     }
 
     /**

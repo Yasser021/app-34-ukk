@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('id_buku')->constrained('bukus')->onDelete('cascade');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
             $table->string('review');
-            $table->enum('rating', ['0', '1', '2', '3', '4', '5'])->default('0');
+            $table->integer('rating');
             $table->timestamps();
         });
     }

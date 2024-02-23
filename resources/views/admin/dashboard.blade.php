@@ -88,7 +88,7 @@
                             <div class="card overflow-hidden rounded-2">
                                 <div class="position-relative">
                                     <img src="{{ asset('storage/' . $item->cover) }}" class="card-img-top p-3 rounded-0"
-                                        alt="...">
+                                        alt="..." >
                                 </div>
                                 <div class="card-body pt-3 p-4">
                                     <h6 class="fw-semibold fs-4">{{ $item->title }}</h6>

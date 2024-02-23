@@ -76,7 +76,7 @@
             </ul>
             <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
                 <div class="d-flex">
-                    <a href="/" class="btn btn-primary fs-2 fw-semibold lh-sm">Landing Pages <i
+                    <a href="{{ route('landingPage.index') }}" class="btn btn-primary fs-2 fw-semibold lh-sm">Landing Pages <i
                             class="ti ti-arrow-right"></i></a>
                 </div>
             </div>

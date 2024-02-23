@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\buku;
 use App\Models\review;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class reviewController extends Controller
 {
@@ -23,6 +27,7 @@ class reviewController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**
@@ -31,6 +36,38 @@ class reviewController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'id_buku' => 'required|exists:bukus,id',
+            'review' => 'required',
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+
+        $data = [
+            'id_user' => Auth::user()->id,
+            'id_buku' => $request->id_buku,
+            'review' => $request->review,
+            'rating' => $request->rating,
+        ];
+        review::create($data);
+        Alert::success('Success', 'Success Add Review');
+        return redirect()->route('buku.show', $request->id_buku);
+
+        // $request = Auth::user()->id;
+
+        // $request->validate([
+        //     'id_user' => 'required|exists:users,id',
+        //     'id_buku' => 'required|exists:bukus,id',
+        //     'review' => 'required',
+        // ]);
+
+        // $data = [
+        //     'id_user' => $request->id_user,
+        //     'id_buku' => $request->id_buku,
+        //     'review' => $request->review,
+        // ];
+        // review::create($data);
+        // Alert::success('Success', 'Success Add Review');
+        // return redirect('/review');
     }
 
     /**

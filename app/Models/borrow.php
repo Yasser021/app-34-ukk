@@ -14,8 +14,16 @@ class borrow extends Model
         'id_buku',
         'id_user',
         'status',
-        'due_date',
+        'date_taken',
         'return_date',
         'quantity',
     ];
+
+    public function buku()
+    {
+        return $this->belongsTo(buku::class, 'id_buku');
+    }
+    public function user(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

@@ -14,15 +14,35 @@
         </div>
     </div>
     {{-- end Jumbotron --}}
-    {{-- card --}}
-    @include('comp.cardBook')
-    <div class="d-flex justify-content-center mt-3">
-        <a href="#" class="btn btn-pr" type="button">See More !</a>
-    </div>
-    {{-- end book --}}
-    {{-- Review --}}
-    @include('comp.ripiu')
-    {{-- End review --}}
+    @if (Auth::check())
+        {{-- card --}}
+        <div class="container mt-5">
+            <h2 class="text-center">BOOK</h2>
+            <div class="row mt-5">
+                @foreach ($book as $item)
+                    <div class="col-3">
+                        <div class="text-center">
+                            <a href="{{ route('book.show', $item->id) }}" class="text-decoration-none text-pr">
+                                <div class="card-book">
+                                    <img src="{{ asset('storage/' . $item->cover) }}" alt="sampul" width="100"
+                                        height="150">
+                                    <p class="text-center mt-3 text-decoration-none">{{ $item->title }}</p>
+                                    <p class="text-center mt-1 text-decoration-none">{{ $item->kategori->kategori }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <a href="{{ route('book.index') }}" class="btn btn-pr" type="button">See More !</a>
+        </div>
+        {{-- end book --}}
+        {{-- Review --}}
+        @include('comp.ripiu')
+        {{-- End review --}}
+    @endif
     {{-- contact us --}}
     <div class="cf  py-5">
         <div class="container">

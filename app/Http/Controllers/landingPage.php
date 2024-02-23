@@ -14,9 +14,10 @@ class landingPage extends Controller
     public function index()
     {
         //
-        $buku = buku::all();
+        $book = buku::paginate('4');
         $review = review::all();
-        return view('landingPage', compact('buku', 'review'));
+        
+        return view('user.landingPage', compact('book', 'review'));
     }
 
     /**

@@ -200,3 +200,9 @@ body {
     border-color: #884a39;
     color: #fff; /* Set text color to white on hover */
 }
+
+.custom-image {
+    background-color: #884a39;
+    padding: 10px 5pxs;
+    border-radius: 5px;
+}

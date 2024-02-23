@@ -17,6 +17,7 @@ class kategoriController extends Controller
         $title = 'Delete category!';
         $text = "Are you sure you want to delete?";
         confirmDelete($title, $text);
+        
         return view('admin.table.tableKategori', compact('kategori'));
     }
 
@@ -85,6 +86,7 @@ class kategoriController extends Controller
         //
         $data = kategori::findOrFail($id);
         $data->delete();
-        return redirect()->route('kategori.index')->with('success', 'Kategori Berhasil Terhapus');
+        Alert::success('success', 'Success Delete Category');
+        return redirect()->route('kategori.index');
     }
 }

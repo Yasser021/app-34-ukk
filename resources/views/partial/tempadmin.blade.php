@@ -14,10 +14,10 @@
 </head>
 
 <body style="background-color:white; color:black;">
+    @include('sweetalert::alert')
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
-        @include('sweetalert::alert')
 
         @include('comp.sidebar')
         @yield('konten')

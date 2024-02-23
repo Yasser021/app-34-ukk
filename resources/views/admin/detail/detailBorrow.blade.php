@@ -14,36 +14,36 @@
                             <div class="card-body">
                                 <div class="form-floating mb-3">
                                     <input type="number" class="form-control" id="floatingInput" placeholder="ID Borrow"
-                                        name="id" value="" disabled>
+                                        name="id" value="{{ $borrow->id }}" disabled>
                                     <label for="floatingInput">ID Borrow</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" placeholder="User Name"
-                                        name="user" value="" disabled>
+                                        name="user" value="{{ $borrow->user->name }}" disabled>
                                     <label for="floatingInput">User</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="Book Name" name="Book" value="" disabled>
+                                        placeholder="Book Name" name="Book" value="{{ $borrow->buku->title }}" disabled>
                                     <label for="floatingInput">Book Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="Borrow Date" name="borrow_date" value="" disabled>
+                                        placeholder="Borrow Date" name="borrow_date" value="{{ $borrow->date_taken }}" disabled>
                                     <label for="floatingInput">Borrow Date</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" placeholder="Return Date"
-                                        name="return_date" value="" disabled>
+                                        name="return_date" value="{{ $borrow->return_date }}" disabled>
                                     <label for="floatingInput">Return Date</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" placeholder="Status"
-                                        name="status" value="" disabled>
+                                        name="status" value="{{ $borrow->status }}" disabled>
                                     <label for="floatingInput">Status</label>
                                 </div>
-                                <a href="/bor" class="btn btn-danger">Return</a>
-                                <a href="/editbor" class="btn btn-success">Edit</a>
+                                <a href="{{ url()->previous() }}" class="btn btn-danger">Return</a>
+                                <a href="{{ route('borrow.edit', $borrow->id) }}" class="btn btn-success">Edit</a>
                             </div>
 
                         </div>
