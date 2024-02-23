@@ -67,8 +67,7 @@ Route::get('/showreg', [sesiController::class, 'showRegister'])->name('showreg')
 Route::post('/register', [sesiController::class, 'register'])->name('register');
 Route::get('/logout', [sesiController::class, 'logout'])->name('logout');
 
-Route::resource('buku', bukuController::class);
-Route::resource('user', userController::class);
+
 Route::resource('landingPage', landingPage::class);
 Route::resource('book', bookController::class);
 Route::get('borrow/create', [borrowController::class, 'create'])->name('borrow.create');
@@ -86,10 +85,12 @@ Route::middleware(['auth', 'checkrole:admin,petugas'])->group(function () {
     Route::delete('review/{id}', [reviewController::class, 'destroy'])->name('review.destroy');
     Route::get('borrow', [borrowController::class, 'index'])->name('borrow.index');
     Route::resource('admin', adminProfile::class);
+    Route::resource('user', userController::class);
+    Route::resource('buku', bukuController::class);
 });
 Route::middleware(['auth', 'checkrole:user'])->group(function () {
     Route::resource('profile', profileController::class);
-    
+
     Route::post('/borrow', [borrowController::class, 'store']);
     Route::post('/review', [reviewController::class, 'store']);
 });
