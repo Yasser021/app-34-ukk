@@ -35,7 +35,7 @@ class reviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
         $request->validate([
             'id_buku' => 'required|exists:bukus,id',
             'review' => 'required',
@@ -48,26 +48,15 @@ class reviewController extends Controller
             'review' => $request->review,
             'rating' => $request->rating,
         ];
-        review::create($data);
+
+        if($request->rating > 5){
+            Alert::error('Error', 'Rating Should Be Under or Equal To 5');
+            return redirect()->route('buku.show', $request->id_buku);
+        }
+
+        review::create($data);  
         Alert::success('Success', 'Success Add Review');
-        return redirect()->route('buku.show', $request->id_buku);
-
-        // $request = Auth::user()->id;
-
-        // $request->validate([
-        //     'id_user' => 'required|exists:users,id',
-        //     'id_buku' => 'required|exists:bukus,id',
-        //     'review' => 'required',
-        // ]);
-
-        // $data = [
-        //     'id_user' => $request->id_user,
-        //     'id_buku' => $request->id_buku,
-        //     'review' => $request->review,
-        // ];
-        // review::create($data);
-        // Alert::success('Success', 'Success Add Review');
-        // return redirect('/review');
+        return redirect()->route('book.show', $request->id_buku);
     }
 
     /**
@@ -76,6 +65,8 @@ class reviewController extends Controller
     public function show(string $id)
     {
         //
+        $review = review::findOrFail($id);
+        return view('admin.detail.detailReview', compact('review'));
     }
 
     /**
@@ -100,5 +91,9 @@ class reviewController extends Controller
     public function destroy(string $id)
     {
         //
+        $data = review::findOrFail($id);
+        $data->delete();
+        Alert::success('Success', 'Success Delete Review');
+        return redirect()->route('review.index');
     }
 }

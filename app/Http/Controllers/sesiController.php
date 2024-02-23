@@ -35,7 +35,7 @@ class sesiController extends Controller
                 return redirect()->route('landingPage.index');
             }
         }else{
-            Alert::error('Login Gagal', 'Email atau Password Salah');
+            Alert::error('Failed Login', 'Email or Password Wrong');
             return redirect()->intended('sesi');
         }
     }
@@ -58,13 +58,14 @@ class sesiController extends Controller
         ];
 
         User::create($data);
+        Alert::success('Success', 'Success Register');
         return redirect()->intended('sesi');
 
     }
     public function logout(){
 
         Auth::logout();
-        Alert::success('Logout Berhasil', 'Logout Berhasil');
+        Alert::success('Success', 'Success Logout');
         return redirect()->intended('/');
 
     }

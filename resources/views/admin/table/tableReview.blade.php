@@ -29,16 +29,18 @@
                             @foreach ($review as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->user->user }}</td>
-                                    <td>{{ $item->buku->buku }}</td>
+                                    <td>{{ $item->user->name }}</td>
+                                    <td>{{ $item->buku->title }}</td>
                                     <td>{{ $item->rating }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('review.show', $item->id) }}" class="btn btn-primary"
+                                            <a href="{{ route('review.show', $item->id) }}" class="btn btn-primary me-2"
                                                 type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-title="Detail"><i class="bi bi-eye"></i></a>
                                             <form action="{{ route('review.destroy', $item->id) }}" method="post">
-                                                <button class="btn btn-danger" type="button"
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger" type="submit"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Delete"><i class="bi bi-trash3"></i></button>
                                             </form>

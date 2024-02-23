@@ -16,13 +16,17 @@
                     <a class="nav-link text-pr" href="{{ route('book.index') }}">Book</a>
                 </li>
                 @if (Auth::check())
-                    <li class="nav-item ">
-                        <a class="nav-link text-pr" href="{{ route('borrow.create') }}">Borrow</a>
-                    </li>
+                    @if (Auth::user()->role == 'user')
+                        <li class="nav-item ">
+                            <a class="nav-link text-pr" href="{{ route('borrow.create') }}">Borrow</a>
+                        </li>
+                    @endif
+
                 @endif
             </ul>
             @if (Auth::check())
-                <a href="/profile" class="text-pr me-2" style="text-decoration: none;">{{ Auth::user()->name }}</a>
+                <a href="{{ route('profile.index') }}" class="text-pr me-2"
+                    style="text-decoration: none;">{{ Auth::user()->name }}</a>
                 <a href="{{ route('logout') }}" class="btn button-outline">Log out</a>
             @else
                 <a href="{{ route('sesi') }}" class="btn button-outline">Log in</a>

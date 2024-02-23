@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\borrowExport;
 use App\Models\borrow;
 use App\Models\buku;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class borrowController extends Controller
@@ -48,7 +50,7 @@ class borrowController extends Controller
 
         $buku = buku::findOrFail($request->id_buku);
         if ($buku->stock < $request->quantity) {
-            Alert::error('Error', 'Stock tidak mencukupi');
+            Alert::error('Error', 'Stock Not Enough');
             return redirect()->route('borrow.create');
         }
 
@@ -62,7 +64,7 @@ class borrowController extends Controller
             'date_taken' => $date_taken,
             'return_date' => $return_date,
         ]);
-
+        $buku = buku::findOrFail($request->id_buku);
         $buku->stock -= $request->quantity;
         $buku->save();
 
@@ -95,27 +97,31 @@ class borrowController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id, borrow $borrow)
     {
-        //
         $request->validate([
-            'id_buku' => 'required|exists:bukus,id',
-            'quantity' => 'required|max:5',
+            'status' => 'required',
         ]);
 
-        $buku = buku::findOrFail($request->id_buku);
-        $borrow = borrow::findOrFail($id);
         $data = [
-            'id_buku' => $buku->id,
-            'id_user' => $borrow->id_user,
+            'id' => $request->id,
+            'id_buku' => $request->id_buku,
+            'id_user' => $request->id_user,
             'quantity' => $request->quantity,
+            'date_taken' => $request->date_taken,
+            'return_date' => $request->return_date,
+            'status' => $request->status
         ];
 
+        $borrow = borrow::findOrFail($id);
         $borrow->update($data);
-        $buku->stock -= $request->quantity;
-        $buku->save();
 
-        Alert::success('Success', 'Success Update Borrow');
+        if ($request->status == 2) {
+            $buku = buku::findOrFail($request->id_buku);
+            $buku->stock += $request->quantity;
+            $buku->save();
+        }
+        Alert::success('Success', 'Success Update Status Borrow');
         return redirect()->route('borrow.index');
     }
 
@@ -124,21 +130,12 @@ class borrowController extends Controller
      */
     public function destroy(string $id)
     {
-        // 
-        $borrow = borrow::findOrFail($id);
-
-        $buku = $borrow->id_buku;
-        $buku->stock += $borrow->quantity;
-        $buku->save();
-
-        $borrow->delete();
-        Alert::success('Success', 'Success Delete Borrow');
-        return redirect()->route('borrow.index');
     }
 
     public function export()
     {
         //
-
+        Alert::success('Success', 'Success Export Borrow');
+        return Excel::download(new borrowExport, 'borrow.xlsx');
     }
 }

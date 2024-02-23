@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_buku')->constrained('bukus')->onDelete('cascade');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['0', '1', '2'])->default('0');
+            $table->enum('status', ['1', '2'])->default('1');
             $table->date('date_taken');
             $table->date('return_date');
             $table->integer('quantity');

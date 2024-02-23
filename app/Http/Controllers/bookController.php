@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\buku;
+use App\Models\review;
 use Illuminate\Http\Request;
 
 class bookController extends Controller
@@ -39,7 +40,8 @@ class bookController extends Controller
     {
         $book = buku::findOrFail($id);
         $buku = buku::all();
-        return view('user.detail', compact('book', 'buku'));
+        $review = review::paginate('6')->where('id_buku', $id);
+        return view('user.detail', compact('book', 'buku', 'review'));
     }
 
     /**

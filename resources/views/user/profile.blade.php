@@ -5,11 +5,19 @@
             <div class="col-lg-6">
                 <h3 class="text-center">Your Profile</h3>
                 <div class="card-form mt-3">
-                    <input type="text" name="name" class="form-control p-3" placeholder="Your Name">
-                    <input type="email" name="email" class="form-control p-3 my-3" placeholder="Your Email address">
-                    <input type="number" name="no" class="form-control p-3" placeholder="Your Phone Number">
-                    <textarea class="form-control mb-3 mt-3" placeholder="Your address" name="address" style="height: 100px"></textarea>
-                    <button class="btn btn-sec form-control">Edit</button>
+                    <form action="{{ route('profile.update', Auth::user()->id) }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <input type="text" name="name" class="form-control p-3" placeholder="Your Name"
+                            value="{{ Auth::user()->name }}">
+                        <input type="email" name="email" class="form-control p-3 my-3" placeholder="Your Email address"
+                            value="{{ Auth::user()->email }}">
+                        <input type="number" name="no" class="form-control p-3" placeholder="Your Phone Number"
+                            value="{{ Auth::user()->no }}">
+                        <input type="password" name="password" class="form-control p-3 my-3" placeholder="Your Password"
+                            {{ Auth::user()->password }}>
+                        <button class="btn btn-sec form-control" type="submit">Edit</button>
+                    </form>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -22,40 +30,23 @@
                                 <th scope="col">Books Name</th>
                                 <th scope="col">Date Taken</th>
                                 <th scope="col">Date Return</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Solo Leveling</td>
-                                <td>February 9, 2024</td>
-                                <td>February 24, 2024</td>
-                                <td><button type="button" class="btn btn-tab" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" data-bs-title="Detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>The Northern Blade</td>
-                                <td>January 7, 2024</td>
-                                <td>February 1, 2024</td>
-                                <td><button type="button" class="btn btn-tab" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" data-bs-title="Detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Parasol Alliance</td>
-                                <td>Desember 30, 2023</td>
-                                <td>January 15, 2023</td>
-                                <td><button type="button" class="btn btn-tab" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" data-bs-title="Detail">
-                                        <i class="bi bi-eye"></i>
-                                    </button></td>
-                            </tr>
+                            @foreach ($borrow as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->buku->title }}</td>
+                                    <td>{{ $item->date_taken }}</td>
+                                    <td>{{ $item->return_date }}</td>
+                                    @if ($item->status == 1)
+                                        <td>Borrowed</td>
+                                    @elseif ($item->status == 2)
+                                        <td>Returned</td>
+                                    @endif
+                                </tr>
+                            @endforeach
                             <!-- Add more rows as needed -->
                         </tbody>
                     </table>

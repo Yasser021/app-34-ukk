@@ -8,22 +8,18 @@
                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                <div class="modal-body">
-                   <form action="{{ route('review.store') }}" method="POST">
+                   <form action="/review" method="POST">
                        @csrf
                        <div class="mt-3">
                            <select class="form-select py-3" aria-label="Default select example" name="id_buku">
                                <option selected disabled>Pick A Book</option>
                                @foreach ($buku as $item)
-                                   <option value="{{ $item->id_buku }}">{{ $item->title }}</option>
+                                   <option value="{{ $item->id }}">{{ $item->title }}</option>
                                @endforeach
                            </select>
                            <input type="number" name="rating" id="col" class="form-control py-3 mt-3"
-                               placeholder="give rating">
-                               <textarea name="review" id="" style="height: 100px" class="form-control mt-3" placeholder="Give Ur Review"></textarea>
-                           {{-- <div class="form-floating">
-                               <textarea class="form-control mb-3" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px" name="review"></textarea>
-                               <label for="floatingTextarea">Give Ur Review About This Book</label>
-                           </div> --}}
+                               placeholder="give rating" min="1" max="5">
+                           <textarea name="review" id="" style="height: 100px" class="form-control mt-3" placeholder="Give Ur Review"></textarea>
                        </div>
                        <div class="modal-footer">
                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>

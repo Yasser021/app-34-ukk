@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\buku;
-use App\Models\review;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class landingPage extends Controller
+class adminProfile extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,8 @@ class landingPage extends Controller
     public function index()
     {
         //
-        $book = buku::paginate('4');
-        $review = review::all();
-        return view('user.landingPage', compact('book', 'review'));
+        $user = User::all();
+        return view('admin.profileadmin', compact('user'));
     }
 
     /**
@@ -49,6 +47,8 @@ class landingPage extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::findOrFail($id);
+        return view('admin.profileadmin', compact('user'));
     }
 
     /**

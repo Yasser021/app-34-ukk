@@ -12,32 +12,34 @@
                         <h5 class="card-title fw-semibold mb-4">Forms Detail Borrow</h5>
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('borrow.update', $borrow->id) }}" method="post">
+                                <form action="/borrow/{{ $borrow->id }}" method="post">
                                     @csrf
-                                    @method('put')
+                                    @method('PUT')
+                                    <input type="hidden" name="id" value="{{ $borrow->id }}">
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
-                                            placeholder="User Name" name="user" value="{{ $borrow->user->name }}"
-                                            disabled>
+                                            placeholder="User Name" name="id_user" value="{{ $borrow->id_user }}" >
                                         <label for="floatingInput">User</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
-                                            placeholder="Book Name" name="Book Name" value="{{ $borrow->buku->title }}"
-                                            disabled>
+                                            placeholder="Book Name" name="id_buku" value="{{ $borrow->id_buku }}" >
                                         <label for="floatingInput">Book Name</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
-                                            placeholder="Borrow Date" name="borrow_date" value="{{ $borrow->date_taken }}"
-                                            disabled>
+                                            placeholder="Borrow Date" name="date_taken" value="{{ $borrow->date_taken }}" >
                                         <label for="floatingInput">Borrow Date</label>
                                     </div>
                                     <div class="form-floating mb-3">
                                         <input type="text" class="form-control" id="floatingInput"
-                                            placeholder="Return Date" name="return_date" value="{{ $borrow->return_date }}"
-                                            disabled>
+                                            placeholder="Return Date" name="return_date" value="{{ $borrow->return_date }}" >
                                         <label for="floatingInput">Return Date</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="floatingInput"
+                                            placeholder="Quantity" name="quantity" value="{{ $borrow->quantity }}" >
+                                        <label for="floatingInput">Quantity</label>
                                     </div>
                                     {{-- <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" placeholder="Status"
@@ -48,7 +50,6 @@
                                         <select class="form-select mb-2" id="floatingSelect"
                                             aria-label="Floating label select example" name="status">
                                             <option selected disabled>Open this select menu</option>
-                                            <option value="0">Booked</option>
                                             <option value="1">Borrow</option>
                                             <option value="2">Return</option>
                                         </select>

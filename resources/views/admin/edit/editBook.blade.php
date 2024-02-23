@@ -55,7 +55,7 @@
                                             aria-label="Floating label select example" name="id_kategori">
                                             <option selected disabled>Open this select menu</option>
                                             @foreach ($kategori as $item)
-                                                <option value="{{ $item->id }} {{ $item->id == $buku->id_kategori ? 'selected' : '' }}">{{ $item->kategori }}</option>
+                                                <option value="{{ $item->id }}" {{ $item->id == $buku->id_kategori ? 'selected' : '' }}>{{ $item->kategori }}</option>
                                             @endforeach
                                         </select>
                                         <label for="floatingSelect">Select Category</label>

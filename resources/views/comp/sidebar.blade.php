@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/review" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('review.index') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-star"></i>
                         </span>

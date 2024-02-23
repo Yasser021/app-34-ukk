@@ -14,30 +14,30 @@
                             <div class="card-body">
                                 <div class="form-floating mb-3">
                                     <input type="number" class="form-control" id="floatingInput" placeholder="Books Name"
-                                        name="id" value="" disabled>
+                                        name="id" value="{{ $review->id }}" disabled>
                                     <label for="floatingInput">ID Review</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" placeholder="Author Name"
-                                        name="user" value="" disabled>
+                                        name="user" value="{{ $review->user->name }}" disabled>
                                     <label for="floatingInput">User</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" placeholder="Books Name"
-                                        name="book" value="" disabled>
+                                        name="book" value="{{ $review->buku->title }}" disabled>
                                     <label for="floatingInput">Books Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <textarea class="form-control" placeholder="Review" id="floatingTextarea2" name="review" style="height: 100px"
-                                        disabled></textarea>
+                                        disabled>{{ $review->review }}</textarea>
                                     <label for="floatingTextarea2">Review</label>
                                 </div>
                                 <div class="form-floating mb-3">
                                     <input type="number" class="form-control" id="floatingInput" placeholder="Rating"
-                                        name="rating" value="" disabled>
+                                        name="rating" value="{{ $review->rating }}" disabled>
                                     <label for="floatingInput">Rating</label>
                                 </div>
-                                <a href="/review" class="btn btn-danger">Return</a>
+                                <a href="{{ url()->previous() }}" class="btn btn-danger">Return</a>
                             </div>
                         </div>
                     </div>

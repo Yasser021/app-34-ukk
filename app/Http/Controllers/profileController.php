@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\buku;
-use App\Models\review;
+use App\Models\borrow;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class landingPage extends Controller
+class profileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class landingPage extends Controller
     public function index()
     {
         //
-        $book = buku::paginate('4');
-        $review = review::all();
-        return view('user.landingPage', compact('book', 'review'));
+        $user = User::all();
+        $borrow = borrow::all()->where('id_user', auth()->user()->id);
+        return view('user.profile', compact('user', 'borrow'));
     }
 
     /**
@@ -57,6 +57,15 @@ class landingPage extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $user = User::findOrFail($id);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+        $user->update($data);
+        return redirect()->route('profile.index');
     }
 
     /**

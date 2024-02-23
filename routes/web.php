@@ -1,12 +1,14 @@
 <?php
 
 use App\Exports\bukuExport;
+use App\Http\Controllers\adminProfile;
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\borrowController;
 use App\Http\Controllers\bukuController;
 use App\Http\Controllers\dashboard;
 use App\Http\Controllers\kategoriController;
 use App\Http\Controllers\landingPage;
+use App\Http\Controllers\profileController;
 use App\Http\Controllers\reviewController;
 use App\Http\Controllers\sesiController;
 use App\Http\Controllers\userController;
@@ -65,29 +67,29 @@ Route::get('/showreg', [sesiController::class, 'showRegister'])->name('showreg')
 Route::post('/register', [sesiController::class, 'register'])->name('register');
 Route::get('/logout', [sesiController::class, 'logout'])->name('logout');
 
-// Route::resource('borrow', borrowController::class);
-Route::get('borrow', [borrowController::class, 'index'])->name('borrow.index');
-Route::get('borrow/create', [borrowController::class, 'create'])->name('borrow.create');
-Route::post('/borrow', [borrowController::class, 'store']);
-Route::get('/borrow/{id}/edit', [borrowController::class, 'edit'])->name('borrow.edit');
-Route::get('/borrow/{id}', [borrowController::class, 'show'])->name('borrow.detail');
-Route::put('/borrow/{id}', [borrowController::class, 'update'])->name('borrow.update');
-Route::delete('/borrow/{id}', [borrowController::class, 'destroy'])->name('borrow.destroy');
-
-
-
 Route::resource('buku', bukuController::class);
-
-Route::resource('book', bookController::class);
-
-Route::get('/export', [bukuController::class, 'export']);
-
-Route::resource('kategori', kategoriController::class);
-
 Route::resource('user', userController::class);
-
-Route::resource('review', reviewController::class);
-
-Route::resource('dashboard', dashboard::class);
-
 Route::resource('landingPage', landingPage::class);
+Route::resource('book', bookController::class);
+Route::get('borrow/create', [borrowController::class, 'create'])->name('borrow.create');
+
+Route::middleware(['auth', 'checkrole:admin,petugas'])->group(function () {
+    Route::resource('dashboard', dashboard::class);
+    Route::resource('kategori', kategoriController::class);
+    Route::get('/borrow/{id}/edit', [borrowController::class, 'edit'])->name('borrow.edit');
+    Route::get('/borrow/{id}', [borrowController::class, 'show'])->name('borrow.detail');
+    Route::put('/borrow/{id}', [borrowController::class, 'update']);
+    Route::get('/export', [bukuController::class, 'export']);
+    Route::get('/exportbor', [borrowController::class, 'export']);
+    Route::get('review', [reviewController::class, 'index'])->name('review.index');
+    Route::get('review/show', [reviewController::class, 'show'])->name('review.show');
+    Route::delete('review/{id}', [reviewController::class, 'destroy'])->name('review.destroy');
+    Route::get('borrow', [borrowController::class, 'index'])->name('borrow.index');
+    Route::resource('admin', adminProfile::class);
+});
+Route::middleware(['auth', 'checkrole:user'])->group(function () {
+    Route::resource('profile', profileController::class);
+    
+    Route::post('/borrow', [borrowController::class, 'store']);
+    Route::post('/review', [reviewController::class, 'store']);
+});

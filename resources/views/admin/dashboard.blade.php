@@ -47,16 +47,16 @@
                                                     <h6 class="fw-semibold mb-0">{{ $item->id }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <h6 class="fw-semibold mb-1">{{ $item->user }}</h6>
+                                                    <h6 class="fw-semibold mb-1">{{ $item->user->name }}</h6>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <p class="mb-0 fw-normal">{{ $item->book }}</p>
+                                                    <p class="mb-0 fw-normal">{{ $item->buku->title }}</p>
                                                 </td>
                                                 <td class="border-bottom-0">
                                                     <p class="mb-0 fw-normal">{{ $item->date_taken }}</p>
                                                 </td>
                                                 <td class="border-bottom-0">
-                                                    <p class="mb-0 fw-normal">{{ $item->date_return }}</p>
+                                                    <p class="mb-0 fw-normal">{{ $item->return_date }}</p>
                                                 </td>
 
                                                 <td class="border-bottom-0">

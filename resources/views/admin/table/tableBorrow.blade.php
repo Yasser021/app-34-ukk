@@ -13,6 +13,7 @@
                             <h5 class="card-title fw-semibold mb-4">Table Borrow</h5>
                         </div>
                         {{-- <button class="btn btn-primary"><i class="bi bi-plus me-2"></i>Add Book</button> --}}
+                        <a href="/exportbor" class="btn btn-success" type="_blank"><i class="bi bi-plus me-2 "></i>Export</a>
                     </div>
                 </div>
                 <div class="container">
@@ -39,9 +40,7 @@
                                     <td>{{ $item->return_date }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>
-                                        @if ($item->status == 0)
-                                            <span class="badge bg-dark">Booked</span>
-                                        @elseif ($item->status == 1)
+                                        @if ($item->status == 1)
                                             <span class="badge bg-primary">Borrowed</span>
                                         @elseif ($item->status == 2)
                                             <span class="badge bg-success">Returned</span>
@@ -52,16 +51,21 @@
                                             <a href="{{ route('borrow.detail', $item->id) }}" class="btn btn-primary"
                                                 type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-title="Detail"><i class="bi bi-eye"></i></a>
+                                                {{-- @if ($item->status == 1)
+                                                    <form action="/borrow/{{ $item->id }}" method="post" class="mx-2">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="hidden" name="id_buku" value="{{ $item->buku }}">
+                                                        <input type="hidden" name="status" value="1">
+                                                        <input type="hidden" name="status" value="2">
+                                                        <button class="btn btn-warning" type="submit"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-title="Returned">Return book</button>
+                                                    </form>
+                                                @endif --}}
                                             <a href="{{ route('borrow.edit', $item->id) }}" class="btn btn-warning mx-2"
                                                 type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
-                                            <form action="{{ route('borrow.destroy', $item->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger" type="submit" data-bs-toggle="tooltip"
-                                                    data-bs-placement="top" data-bs-title="Delete"><i
-                                                        class="bi bi-trash3"></i></button>
-                                            </form>
                                         </div>
                                     </td>
                                 </tr>
