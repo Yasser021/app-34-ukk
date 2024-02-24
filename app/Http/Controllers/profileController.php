@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\borrow;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class profileController extends Controller
 {
@@ -65,6 +66,7 @@ class profileController extends Controller
             'password' => $request->password,
         ];
         $user->update($data);
+        Alert::success('Success', 'Success Update Profile');
         return redirect()->route('profile.index');
     }
 

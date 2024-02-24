@@ -14,9 +14,6 @@ class kategoriController extends Controller
     public function index()
     {
         $kategori = kategori::paginate('5');
-        $title = 'Delete category!';
-        $text = "Are you sure you want to delete?";
-        confirmDelete($title, $text); 
         return view('admin.table.tableKategori', compact('kategori'));
     }
 

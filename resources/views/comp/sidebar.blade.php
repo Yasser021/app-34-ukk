@@ -65,19 +65,22 @@
                         <span class="hide-menu">Borrow</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('user.index') }}" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-users"></i>
-                        </span>
-                        <span class="hide-menu">Manage Users</span>
-                    </a>
-                </li>
+                @if (Auth::user()->role == 'admin')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('user.index') }}" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-users"></i>
+                            </span>
+                            <span class="hide-menu">Manage Users</span>
+                        </a>
+                    </li>
+                @endif
+
             </ul>
             <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
                 <div class="d-flex">
-                    <a href="{{ route('landingPage.index') }}" class="btn btn-primary fs-2 fw-semibold lh-sm">Landing Pages <i
-                            class="ti ti-arrow-right"></i></a>
+                    <a href="{{ route('landingPage.index') }}" class="btn btn-primary fs-2 fw-semibold lh-sm">Landing
+                        Pages <i class="ti ti-arrow-right"></i></a>
                 </div>
             </div>
         </nav>

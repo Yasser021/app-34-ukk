@@ -28,10 +28,10 @@ class sesiController extends Controller
         if(Auth::attempt($data)){
             $request->session()->regenerate();
             if(Auth::user()->role == 'admin' || Auth::user()->role == 'petugas'){
-                Alert::success('Login Berhasil', 'Login Berhasil');
+                Alert::success('Success', 'success login');
                 return redirect()->route('dashboard.index');
             }elseif(Auth::user()->role == 'user'){
-                Alert::success('Login Berhasil', 'Login Berhasil');
+                Alert::success('Success', 'success login');
                 return redirect()->route('landingPage.index');
             }
         }else{

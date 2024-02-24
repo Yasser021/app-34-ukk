@@ -143,6 +143,7 @@ class bukuController extends Controller
         ];
 
         $buku->delete($data);
+        Alert::success('success', 'Success Delete Book');
         return redirect()->route('buku.index');
     }
     public function export()

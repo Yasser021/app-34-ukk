@@ -41,6 +41,8 @@
                                                 type="button" data-bs-toggle="tooltip" data-bs-placement="top"
                                                 data-bs-title="Edit"><i class="bi bi-pencil"></i></a>
                                             <form action="{{ route('user.destroy', $item->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
                                                 <button  class="btn btn-danger" type="submit"
                                                     data-bs-toggle="tooltip" data-bs-placement="top"
                                                     data-bs-title="Delete"><i class="bi bi-trash3"></i></button>
@@ -51,6 +53,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="">
+                        {{ $user->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
             </div>
         </div>

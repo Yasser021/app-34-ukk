@@ -64,7 +64,6 @@ class reviewController extends Controller
      */
     public function show(string $id)
     {
-        //
         $review = review::findOrFail($id);
         return view('admin.detail.detailReview', compact('review'));
     }

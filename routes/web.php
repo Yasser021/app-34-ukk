@@ -72,6 +72,7 @@ Route::resource('landingPage', landingPage::class);
 Route::resource('book', bookController::class);
 Route::get('borrow/create', [borrowController::class, 'create'])->name('borrow.create');
 
+
 Route::middleware(['auth', 'checkrole:admin,petugas'])->group(function () {
     Route::resource('dashboard', dashboard::class);
     Route::resource('kategori', kategoriController::class);
@@ -90,7 +91,6 @@ Route::middleware(['auth', 'checkrole:admin,petugas'])->group(function () {
 });
 Route::middleware(['auth', 'checkrole:user'])->group(function () {
     Route::resource('profile', profileController::class);
-
     Route::post('/borrow', [borrowController::class, 'store']);
     Route::post('/review', [reviewController::class, 'store']);
 });

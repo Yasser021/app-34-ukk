@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title fw-semibold mb-4">Forms Detail Borrow</h5>
+                        <h5 class="card-title fw-semibold mb-4">Forms Edit status Borrow</h5>
                         <div class="card">
                             <div class="card-body">
                                 <form action="/borrow/{{ $borrow->id }}" method="post">
@@ -17,29 +17,29 @@
                                     @method('PUT')
                                     <input type="hidden" name="id" value="{{ $borrow->id }}">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingInput"
+                                        <input type="hidden" class="form-control" id="floatingInput"
                                             placeholder="User Name" name="id_user" value="{{ $borrow->id_user }}" >
-                                        <label for="floatingInput">User</label>
+                                 
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingInput"
+                                        <input type="hidden" class="form-control" id="floatingInput"
                                             placeholder="Book Name" name="id_buku" value="{{ $borrow->id_buku }}" >
-                                        <label for="floatingInput">Book Name</label>
+                                       
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingInput"
+                                        <input type="hidden" class="form-control" id="floatingInput"
                                             placeholder="Borrow Date" name="date_taken" value="{{ $borrow->date_taken }}" >
-                                        <label for="floatingInput">Borrow Date</label>
+                                      
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingInput"
+                                        <input type="hidden" class="form-control" id="floatingInput"
                                             placeholder="Return Date" name="return_date" value="{{ $borrow->return_date }}" >
-                                        <label for="floatingInput">Return Date</label>
+                                     
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="floatingInput"
+                                        <input type="hidden" class="form-control" id="floatingInput"
                                             placeholder="Quantity" name="quantity" value="{{ $borrow->quantity }}" >
-                                        <label for="floatingInput">Quantity</label>
+                                       
                                     </div>
                                     {{-- <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="floatingInput" placeholder="Status"

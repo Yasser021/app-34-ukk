@@ -21,5 +21,14 @@ class kategoriSeeder extends Seeder
         DB::table('kategoris')->insert([
             'kategori' => 'Comic',
         ]);
+        DB::table('kategoris')->insert([
+            'kategori' => 'Self-help',
+        ]);
+        DB::table('kategoris')->insert([
+            'kategori' => 'One-shot',
+        ]);
+        DB::table('kategoris')->insert([
+            'kategori' => 'Fiction',
+        ]);
     }
 }

@@ -24,10 +24,42 @@ class userSeeder extends Seeder
             'created_at' => now(),
         ]);
         DB::table('users')->insert([
-            'name' => 'user',
-            'email' => 'user@gmail.com',
+            'name' => 'surya',
+            'email' => 'surya@gmail.com',
             'password' => Hash::make('password'),
-            'no' => '123456789',
+            'no' => '12938102',
+            'role' => 'user',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'syawal',
+            'email' => 'syawal@gmail.com',
+            'password' => Hash::make('password'),
+            'no' => '928394829',
+            'role' => 'user',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'pasya',
+            'email' => 'pasya@gmail.com',
+            'password' => Hash::make('password'),
+            'no' => '234982',
+            'role' => 'user',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'yudeez',
+            'email' => 'yudis@gmail.com',
+            'password' => Hash::make('password'),
+            'no' => '182731',
+            'role' => 'user',
+            'created_at' => now(),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Hana',
+            'email' => 'hana@gmail.com',
+            'password' => Hash::make('password'),
+            'no' => '129831',
             'role' => 'user',
             'created_at' => now(),
         ]);

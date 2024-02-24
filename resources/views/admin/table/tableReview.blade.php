@@ -22,6 +22,7 @@
                                 <th scope="col">Username</th>
                                 <th scope="col">Book</th>
                                 <th scope="col">Rating</th>
+                                <th scope="col">Review</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -32,11 +33,12 @@
                                     <td>{{ $item->user->name }}</td>
                                     <td>{{ $item->buku->title }}</td>
                                     <td>{{ $item->rating }}</td>
+                                    <td>{{ $item->review }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{ route('review.show', $item->id) }}" class="btn btn-primary me-2"
+                                            {{-- <a href="{{ route('review.show', $item->id) }}" class="btn btn-primary me-2"
                                                 type="button" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                data-bs-title="Detail"><i class="bi bi-eye"></i></a>
+                                                data-bs-title="Detail"><i class="bi bi-eye"></i></a> --}}
                                             <form action="{{ route('review.destroy', $item->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')

@@ -23,13 +23,13 @@
                                     <label for="floatingInput">User</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="Book Name" name="Book" value="{{ $borrow->buku->title }}" disabled>
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="Book Name"
+                                        name="Book" value="{{ $borrow->buku->title }}" disabled>
                                     <label for="floatingInput">Book Name</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="Borrow Date" name="borrow_date" value="{{ $borrow->date_taken }}" disabled>
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="Borrow Date"
+                                        name="borrow_date" value="{{ $borrow->date_taken }}" disabled>
                                     <label for="floatingInput">Borrow Date</label>
                                 </div>
                                 <div class="form-floating mb-3">
@@ -43,7 +43,9 @@
                                     <label for="floatingInput">Status</label>
                                 </div>
                                 <a href="{{ url()->previous() }}" class="btn btn-danger">Return</a>
-                                <a href="{{ route('borrow.edit', $borrow->id) }}" class="btn btn-success">Edit</a>
+                                @if ($borrow->status == '1')
+                                    <a href="{{ route('borrow.edit', $borrow->id) }}" class="btn btn-success">Edit</a>
+                                @endif
                             </div>
 
                         </div>

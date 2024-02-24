@@ -15,7 +15,7 @@ class landingPage extends Controller
     {
         //
         $book = buku::paginate('4');
-        $review = review::all();
+        $review = review::paginate('6');
         return view('user.landingPage', compact('book', 'review'));
     }
 

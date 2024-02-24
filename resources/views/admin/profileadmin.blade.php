@@ -48,7 +48,7 @@
                                     <div class="mb-2">
                                         <label for="role">Role Before : {{ $user->role }}</label>
                                     </div>
-                                    <a href="/user" class="btn btn-danger">Return</a>
+                                    <a href="{{ route('dashboard.index') }}" class="btn btn-danger">Return</a>
                                     <button class="btn btn-success" type="submit">Submit</button>
                                 </form>
                             </div>

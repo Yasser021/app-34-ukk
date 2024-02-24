@@ -8,11 +8,13 @@
                 <img src="{{ asset('storage/' . $book->cover) }}" alt="Cover" width="250" height="350">
             </div>
             <div class="col-5">
-                <p class="">Nama : {{ $book->title }}</p>
+                <p class="">Name : {{ $book->title }}</p>
+                <p class="">Category : {{ $book->kategori->kategori }}</p>
                 <p class="">Author : {{ $book->author }}</p>
                 <p class="">Publisher : {{ $book->publisher }}</p>
                 <p class="">Year published : {{ $book->publish_year }} </p>
                 <p class="">Synopsis : {{ $book->desc }}</p>
+                <p class="">Stock : {{ $book->stock }}</p>
                 <div class="d-flex">
                     @if (Auth::check())
                         @if (Auth::user()->role == 'user')

@@ -62,11 +62,20 @@
                                                 <td class="border-bottom-0">
                                                     <p class="mb-0 fw-normal">{{ $item->quantity }}</p>
                                                 </td>
+                                                @if ($item->status == 1)
                                                 <td class="border-bottom-0">
                                                     <div class="d-flex align-items-center gap-2">
                                                         <span class="badge bg-primary  fw-semibold">Borrowed</span>
                                                     </div>
                                                 </td>
+                                                @elseif ($item->status == 2)
+                                                <td class="border-bottom-0">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <span class="badge bg-success  fw-semibold">Return</span>
+                                                    </div>
+                                                </td>
+                                                @endif
+                                               
                                             </tr>
                                         @endforeach
                                     </tbody>

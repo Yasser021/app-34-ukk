@@ -17,7 +17,7 @@
                             @endforeach
                         </select>
                         <input type="number" name="quantity" id="col" class="form-control py-3 text-sc mt-3"
-                            placeholder="How Much?">
+                            placeholder="How Much?" min="1" max="5">
                         <button type="submit" class="btn btn-sec">Borrow</button>
                     </form>
                 </div>

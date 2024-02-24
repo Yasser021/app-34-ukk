@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class userController extends Controller
 {
@@ -48,7 +49,8 @@ class userController extends Controller
             'password' => $request->password,
         ];
         User::create($data);
-        return redirect()->route('user.index')->with('success', 'User Berhasil Tersimpan');
+        Alert::success('Success', 'Successfully Added User');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -91,6 +93,7 @@ class userController extends Controller
             'password' => $request->password,
         ];
         User::findOrFail($id)->update($data);
+        Alert::success('Success', 'Successfully Updated User');
         return redirect()->route('user.index')->with('success', 'User Berhasil Diupdate');
     }
 
@@ -100,5 +103,9 @@ class userController extends Controller
     public function destroy(string $id)
     {
         //
+        $user = User::findOrFail($id);
+        $user->delete();
+        Alert::success('Success', 'Successfully Deleted User');
+        return redirect()->route('user.index');
     }
 }

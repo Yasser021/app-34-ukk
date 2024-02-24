@@ -25,7 +25,7 @@ return new class extends Migration
             $table->year('publish_year');
             $table->integer('stock');
             $table->string('cover')->nullable();
-            $table->string('desc')->nullable();
+            $table->text('desc')->nullable();
             $table->foreignId('id_kategori')->constrained('kategoris')->onDelete('cascade');
             $table->timestamps();
         });
